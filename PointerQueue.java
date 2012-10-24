@@ -1,32 +1,34 @@
 public class PointerQueue implements PersonQueue {
   private Person head;
+  private Person last;
 
   public void PointerQueue() {
   head = null;
+  last = null;
   }
 
 	public void insert(Person person) {
 	  
-	if (head != null) {
-	  
+	if (head == null) {
 	head = person;
-	} else {
-			Person current = head;
-			while (current.getNext() != null) {
-				current = current.getNext();
-			}
-			current.setNext(person);
-		}
-
+	} 
+	
+	else {
+			last.setNext(person);
+	}
+	
+	last = person;
+    }
 
 //mblablala
+
 public Person retrieve() {
 		if (head==null) {
-			System.out.println("EMPTY QUEUE!");
+			System.out.println("It's empty");
 			return null;
 		} 
 Person temp = head;
-		head = head.getNextPerson();
+		head = head.getNext();
 		return temp;
 	}
 	
